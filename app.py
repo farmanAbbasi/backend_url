@@ -18,25 +18,18 @@ def getMovieUrl(movieName):
         movieUrl=""
     return movieUrl
 
-def getCorsEnabled(fullData):
-    url=fullData['url']
-    postData=fullData['postData']
-    print(url)
-    print(postData)
+def getCorsEnabled(url,postData):
     content = requests.post(url,json=postData).json()
     return content
-    
-    
+     
 
 @app.route('/enableCors', methods=['GET','POST'])
 def cors():
+    url=request.args.get('url')
     fullData = request.json
-    print(fullData)
-    content=getCorsEnabled(fullData)
+    content=getCorsEnabled(url,fullData)
     return json.dumps(content)
     
-
-
 
 @app.route('/loadData', methods=['GET'])
 def loadData():
