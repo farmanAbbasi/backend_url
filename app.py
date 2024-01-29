@@ -50,6 +50,6 @@ def getData():
     return json.dumps({"msg": "hello"})
 #http://127.0.0.1:5000/loadData?name1=ava-2020&name2=ava
 if __name__ == '__main__':
-    app.run(debug=True,port=os.getenv("PORT",default=5000))
+    app.run(debug=True,port=os.getenv("PORT",default=5000),host="0.0.0.0")
     
         
