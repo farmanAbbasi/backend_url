@@ -19,18 +19,26 @@ def getMovieUrl(movieName):
         movieUrl=""
     return movieUrl
 
-def getCorsEnabled(url,postData):
-    content = requests.post(url,json=postData).json()
-    return content
+def getCorsEnabled(url,postData,requestMethod):
+    if requestMethod == 'GET':
+        return requests.get(url).json()
+    else:
+        #would pe post    
+        return requests.post(url,json=postData).json()
+   
      
 
 @app.route('/enableCors', methods=['GET','POST'])
 def cors():
     url=request.args.get('url')
-    fullData = request.json
-    content=getCorsEnabled(url,fullData)
-    return json.dumps(content)
-    
+    if request.method == 'GET':
+        content=getCorsEnabled(url,{},request.method)
+        return json.dumps(content)  
+    else:
+        fullData = request.json
+        content=getCorsEnabled(url,fullData,request.method)
+        return json.dumps(content)    
+        
 
 @app.route('/loadData', methods=['GET'])
 def loadData():
