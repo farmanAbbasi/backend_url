@@ -4,6 +4,7 @@ from flask import Flask
 from flask import request
 app = Flask(__name__)
 import json
+import os
 from flask_cors import CORS, cross_origin
 CORS(app)
 
@@ -49,6 +50,6 @@ def getData():
     return json.dumps({"msg": "hello"})
 #http://127.0.0.1:5000/loadData?name1=ava-2020&name2=ava
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True,port=os.getenv("PORT",default=5000))
     
         
