@@ -37,7 +37,9 @@ def chat():
             messages=[
                 {"role": "system", "content": wedding_info},
                 {"role": "user", "content": user_message}
-            ]
+            ],
+            timeout=20  # Adjust as needed
+
         )
 
         reply = response['choices'][0]['message']['content']
