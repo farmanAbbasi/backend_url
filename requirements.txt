@@ -2,7 +2,7 @@ Flask==2.2.3
 openai==0.27.0
 requests==2.24.0
 urllib3==1.25.10
-Werkzeug==1.0.1
+Werkzeug==2.2.2
 gunicorn==19.3.0
 flask_cors
 
