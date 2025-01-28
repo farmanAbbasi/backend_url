@@ -56,6 +56,7 @@ def chat():
         if user_message.lower().startswith("jarvis"):
             # Extract the previous message provided by the user
             previous_message = data.get('previous_message', '')
+            previous_message = previous_message.lower().replace("answer:", "").strip()
             if not previous_message:
                 return jsonify({'reply': "No information to save. Please provide some context."})
 
